@@ -75,6 +75,16 @@ const xdai = {
   gasMultiplier: 5,
 };
 
+// The mumbai config, but it isn't added to networks unless we have a DEPLOYER_MNEMONIC
+const mumbai = {
+  url: process.env.XDAI_RPC_URL ?? 'https://rpc.ankr.com/polygon_mumbai',
+  accounts: {
+    mnemonic: DEPLOYER_MNEMONIC,
+  },
+  chainId: 80001,
+  gasMultiplier: 5,
+};
+
 // The mainnet config, but it isn't added to networks unless we have a DEPLOYER_MNEMONIC
 const mainnet = {
   // Brian's Infura endpoint (free tier)
@@ -92,6 +102,7 @@ const config: HardhatUserConfig = {
     // Ex: If you try to deploy to xdai without DEPLOYER_MNEMONIC, you'll see this error:
     // > Error HH100: Network xdai doesn't exist
     ...(DEPLOYER_MNEMONIC ? { xdai } : undefined),
+    ...(DEPLOYER_MNEMONIC ? { mumbai } : undefined),
     ...(DEPLOYER_MNEMONIC ? { mainnet } : undefined),
     localhost: {
       url: 'http://localhost:8545/',

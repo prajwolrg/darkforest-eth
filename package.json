@@ -67,6 +67,7 @@
     "format": "prettier --write .",
     "hardhat:node": "hardhat node --hostname 0.0.0.0",
     "hardhat:dev": "hardhat --network localhost",
+    "hardhat:testnet": "hardhat --network mumbai",
     "hardhat:prod": "hardhat --network xdai",
     "hardhat:mainnet": "hardhat --network mainnet",
     "compile": "hardhat compile",
